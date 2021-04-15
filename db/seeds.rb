@@ -169,7 +169,7 @@ product_images = [
 30.times do |i|
   p = Product.new
   p.name = Faker::App.name
-  p.tagline = Faker::Lorem.sentence(3, false, 3)
+  p.tagline = Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 3)
   p.thumbnail_url = product_images.sample
   p.link_url = Faker::Internet.url
   p.user = users.sample
@@ -254,7 +254,7 @@ products = Product.all
 200.times do
 
   parent_comment = Comment.new
-  parent_comment.body = Faker::Lorem.paragraph(3, true, 6)
+  parent_comment.body = Faker::Lorem.paragraph(sentence_count: 3, supplemental: true, random_sentences_to_add: 6)
   parent_comment.user = users.sample
   parent_comment.product = products.sample
 
@@ -262,7 +262,7 @@ products = Product.all
     num = [0,1,2,3].sample
     num.times do
       child_comment = Comment.new
-      child_comment.body = Faker::Lorem.paragraph(1, true, 6)
+      child_comment.body = Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 6)
       child_comment.user = users.sample
       child_comment.parent_comment = parent_comment
       child_comment.product = parent_comment.product
